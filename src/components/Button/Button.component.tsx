@@ -26,19 +26,15 @@ export interface ButtonProps
 }
 
 const IconLeftWrapper = styled.span`
-  ${({ theme }) => css`
-    display: inline-flex;
-    align-items: center;
-    margin: 0 4px 0 0;
-  `}
+  display: inline-flex;
+  align-items: center;
+  margin: 0 4px 0 0;
 `;
 
 const IconRightWrapper = styled.span`
-  ${({ theme }) => css`
-    display: inline-flex;
-    align-items: center;
-    margin: 0 0 0 4px;
-  `}
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 0 4px;
 `;
 
 // useButton doesn't support callback refs. This is why we use buttonRef instead
@@ -75,10 +71,8 @@ const _Button: FC<ButtonProps & AriaButtonProps> = ({
 };
 
 export const Button = styled(_Button)`
-  ${({ theme }) => css`
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    background-color: ${(props) => props.theme.primary};
-  `}
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${(props) => props.theme.primaryColor};
 `;

@@ -1,8 +1,8 @@
+import { MPTheme } from "./MPTheme";
+
 //custom theme
-const theme = {
-  colors: {
-    primary: "#FF778F",
-  },
+const theme: MPTheme = {
+  primaryColor: "#FF778F",
 };
 
 export default theme;

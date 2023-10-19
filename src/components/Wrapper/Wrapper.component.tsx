@@ -1,23 +1,19 @@
 import React, { FC } from "react";
-import styled, { css, createGlobalStyle } from "styled-components";
-import { ThemeProvider } from "styled-components";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import theme from "../../theme";
+import { MPTheme } from "../../MPTheme";
 
-const GlobalStyles = createGlobalStyle`
-    html, body, #root {
-        height: 100%;
-    }            
-    ${({ theme }) => css`
-      html body {
-        height: 100%;
-    `}
+// Define global styles
+const GlobalStyles = createGlobalStyle<{ theme: MPTheme }>`
+  html, body {
+    height: 100%;
+    background-color: ${(props) => props.theme.primary};
+  }
 `;
 
 interface WrapperProps {
-  appId?: string;
-  spacing?: boolean;
-  grid?: boolean;
   children?: React.ReactNode;
+  // If you plan to use other props like appId, spacing, grid, or theme, define them here.
 }
 
 const App = styled.div`
