@@ -1,18 +1,11 @@
-import React from 'react'
+import React from "react";
 import "./App.css";
-import { Button, Wrapper, Card } from "./components";
+import { Button, Wrapper, CardList } from "./components";
 
 function App() {
   return (
     <Wrapper>
-      <Card>
-        <Card.Heading>Header</Card.Heading>
-        <Card.SubHeading>SubHeader</Card.SubHeading>
-        <Card.Text>Loremipsum</Card.Text>
-        <Card.Footer>
-          <Button onPress={() => console.log("clicked")}>Click Me!</Button>
-        </Card.Footer>
-      </Card>
+      <CardList />
     </Wrapper>
   );
 }

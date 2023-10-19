@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import theme from "../../theme";
-import { MPTheme } from "../../MPTheme";
+import "bootstrap-grid";
 
 // Define global styles
-const GlobalStyles = createGlobalStyle<{ theme: MPTheme }>`
+const GlobalStyles = createGlobalStyle`
   html, body {
     height: 100%;
     background-color: ${(props) => props.theme.primary};
@@ -22,7 +22,7 @@ const App = styled.div`
 
 export const Wrapper: FC<WrapperProps> = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <GlobalStyles />
+    <GlobalStyles/>
     <App className="app">{children}</App>
   </ThemeProvider>
 );
