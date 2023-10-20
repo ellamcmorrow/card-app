@@ -12,14 +12,6 @@ export interface ButtonProps
    */
   className?: string;
   /**
-   * Icon to display to the left of the button.
-   */
-  icon?: React.ReactNode;
-  /**
-   * Icon positioned left
-   */
-  iconLeft?: boolean;
-  /**
    * Ref that is bound to the underlying button element.
    */
   buttonRef?: React.MutableRefObject<HTMLButtonElement> | undefined;
@@ -44,10 +36,9 @@ const _Button: FC<ButtonProps & AriaButtonProps> = ({
   buttonRef,
   children,
   className,
-  icon,
-  iconLeft,
   ...unhandledProps
 }) => {
+  //TODO Fix type errors
   const internalRef = useRef();
   const ref = buttonRef || internalRef;
   const { buttonProps } = useButton(
@@ -63,9 +54,7 @@ const _Button: FC<ButtonProps & AriaButtonProps> = ({
       ref={ref}
       {...buttonProps}
     >
-      {icon && iconLeft && <IconLeftWrapper>{icon}</IconLeftWrapper>}
       <span>{children}</span>
-      {icon && !iconLeft && <IconRightWrapper>{icon}</IconRightWrapper>}
     </button>
   );
 };
@@ -75,4 +64,6 @@ export const Button = styled(_Button)`
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.primaryColor};
+  padding: ${(props) => props.theme.spacingS};
+  width: 100%;
 `;

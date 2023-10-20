@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 export type Variant = "default" | "neutral" | "primary" | "gray";
 
-type CardProps = {
+interface CardProps {
   children?: React.ReactNode;
   className?: string;
-};
+}
 
 interface CardStaticProps {
   Heading: typeof Heading;
@@ -44,13 +44,20 @@ const SubHeading = styled.div`
 `;
 Card.SubHeading = SubHeading;
 
-const Image = styled.div`
+interface ImageProps {
+  children?: React.ReactNode;
+  className?: string;
+  src?: string;
+  alt?: string;
+}
+
+const Image = styled.img<ImageProps>`
   flex-direction: row;
-  color: green;
   background-color: papayawhip;
   height: 100px;
   width: 100%;
 `;
+
 Card.Image = Image;
 
 const Footer = styled.div`

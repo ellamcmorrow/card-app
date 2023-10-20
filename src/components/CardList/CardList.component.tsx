@@ -1,53 +1,44 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Card } from "../Card";
 import { Button } from "../Button";
+import axios from "axios";
 
 type CardListProps = {
   children?: React.ReactNode;
   className?: string;
 };
-const cardData = [
-  {
-    heading: "Header1",
-    subHeading: "SubHeader1",
-    imageContent: "Loremipsum1",
-  },
-  {
-    heading: "Header2",
-    subHeading: "SubHeader2",
-    imageContent: "Loremipsum2",
-  },
-  {
-    heading: "Header1",
-    subHeading: "SubHeader1",
-    imageContent: "Loremipsum1",
-  },
-  {
-    heading: "Header2",
-    subHeading: "SubHeader2",
-    imageContent: "Loremipsum2",
-  },
-  // ... add more card data as needed
-];
+
 export const CardList: FC<CardListProps> = ({ children, className }) => {
+  const [data, setData] = useState<[]>([]);
+
+  useEffect(() => {
+    axios
+      .get("https://moonpig.github.io/tech-test-frontend/search.json")
+      .then((response) => {
+        setData(response.data.Products);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, [data]); // Empty dependency array means this useEffect runs once when the component mounts
+
   return (
-    <div className="container">
-      <div className="row">
-        {cardData.map((data, index) => (
-          <div key={index} className="col-12 col-md-6 col-lg-3">
+    <div>
+      {data.map((product) => (
+          <div key={product.ProductId} className="col-12 col-md-6 col-lg-2">
             <Card>
-              <Card.Heading>{data.heading}</Card.Heading>
-              <Card.SubHeading>{data.subHeading}</Card.SubHeading>
-              <Card.Image>{data.imageContent}</Card.Image>
+              <Card.Heading>{product.Title}</Card.Heading>
+              <Card.Image
+                src={product.ProductImage.Link.Href}
+                alt={product.Title}
+              ></Card.Image>
               <Card.Footer>
-                <Button onPress={() => console.log("clicked on card", index)}>
-                  Click Me!
-                </Button>
+                Price: {product.Price.Currency}
+                {product.Price.Value}
               </Card.Footer>
             </Card>
           </div>
-        ))}
-      </div>
+      ))}
     </div>
   );
 };
