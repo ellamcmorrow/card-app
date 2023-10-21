@@ -8,6 +8,8 @@ const GlobalStyles = createGlobalStyle`
   html, body {
     height: 100%;
     background-color: ${(props) => props.theme.primary};
+    font-size: ${(props) => props.theme.fontSizeBase};
+    font-weight: ${(props) => props.theme.fontWeightBase};
   }
 `;
 
@@ -22,7 +24,7 @@ const App = styled.div`
 
 export const Wrapper: FC<WrapperProps> = ({ children }) => (
   <ThemeProvider theme={theme}>
-    <GlobalStyles/>
+    <GlobalStyles />
     <App className="app">{children}</App>
   </ThemeProvider>
 );

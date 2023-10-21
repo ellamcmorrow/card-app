@@ -1,8 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 
-export type Variant = "default" | "neutral" | "primary" | "gray";
-
 interface CardProps {
   children?: React.ReactNode;
   className?: string;
@@ -19,7 +17,7 @@ export const Card: FC<CardProps> & CardStaticProps = ({
   children,
   className,
 }) => {
-  return <div className={className}>{children}</div>;
+  return <CardWrapper className={className}>{children}</CardWrapper>;
 };
 
 export const CardWrapper = styled.div`
@@ -27,20 +25,26 @@ export const CardWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  height: 100%;
+  min-height: 100%;
+  border-radius: ${(props) => props.theme.spacingXs};
 `;
 
 const Heading = styled.div`
   flex-direction: row;
   align-items: center;
   background-color: orange;
-  height: 100px;
+  padding: ${(props) => props.theme.spacingXs};
+  background-color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.charcoal};
 `;
 Card.Heading = Heading;
 
 const SubHeading = styled.div`
   flex-direction: row;
-  background-color: pink;
-  height: 100px;
+  padding: ${(props) => props.theme.spacingXs};
+  font-size: ${(props) => props.theme.fontSizeSmall};
+  background-color: ${(props) => props.theme.white};
 `;
 Card.SubHeading = SubHeading;
 
@@ -56,6 +60,9 @@ const Image = styled.img<ImageProps>`
   background-color: papayawhip;
   height: 100px;
   width: 100%;
+  height: auto;
+  border-radius: ${(props) => props.theme.spacingXs};
+  object-fit: cover;
 `;
 
 Card.Image = Image;
@@ -63,8 +70,10 @@ Card.Image = Image;
 const Footer = styled.div`
   flex-direction: row;
   background-color: seagreen;
-  height: 100px;
+  margin: ${(props) => props.theme.spacingXxs};
+  background-color: ${(props) => props.theme.white};
   width: 100%;
+  align-items: center;
 `;
 
 Card.Footer = Footer;

@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Button, Wrapper, CardList } from "./components";
+import { Button, Wrapper, CardList, CardItem } from "./components";
 
 function App() {
   return (

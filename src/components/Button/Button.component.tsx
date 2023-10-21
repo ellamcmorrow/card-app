@@ -15,19 +15,11 @@ export interface ButtonProps
    * Ref that is bound to the underlying button element.
    */
   buttonRef?: React.MutableRefObject<HTMLButtonElement> | undefined;
+  /**
+   * Class name applied to the native button element.
+   */
+  fullWidth?: boolean;
 }
-
-const IconLeftWrapper = styled.span`
-  display: inline-flex;
-  align-items: center;
-  margin: 0 4px 0 0;
-`;
-
-const IconRightWrapper = styled.span`
-  display: inline-flex;
-  align-items: center;
-  margin: 0 0 0 4px;
-`;
 
 // useButton doesn't support callback refs. This is why we use buttonRef instead
 // of forward ref API to provide a way for a ref to be set (we can type it to
@@ -58,12 +50,26 @@ const _Button: FC<ButtonProps & AriaButtonProps> = ({
     </button>
   );
 };
+const fillWidthStyles = css`
+  width: 100%;
+`;
 
 export const Button = styled(_Button)`
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${(props) => props.theme.primaryColor};
-  padding: ${(props) => props.theme.spacingS};
-  width: 100%;
+  ${({ fullWidth, theme }) => css`
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: ${theme.spacingXs};
+    background-color: ${theme.darkPink};
+    border: none;
+    color: ${theme.white};
+    padding: ${theme.spacingS};
+    text-align: center;
+    min-height: 48px;
+    width: 50%;
+    font-weight: ${theme.fontWeightBold};
+    font-size: ${(props) => props.theme.fontSizeBase};
+
+    ${fullWidth && fillWidthStyles}
+  `}
 `;
