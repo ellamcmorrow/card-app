@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import { CardItem } from "./components";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -14,7 +14,12 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
   },
+  {
+    path: "/card/:productId",
+    element: <CardItem />,
+  },
 ]);
+
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
