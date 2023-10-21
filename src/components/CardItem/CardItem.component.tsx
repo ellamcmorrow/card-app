@@ -5,20 +5,32 @@ import { useParams } from 'react-router-dom';
 export const CardItem: FC = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     axios
       .get(`https://moonpig.github.io/tech-test-frontend/search.json`)
       .then(response => {
-        const foundProduct = response.data.Products.find(p => p.ProductId === productId);
-        setProduct(foundProduct);
+        console.log("Fetched Data:", response.data); // To inspect the structure
+        
+        // Assuming ProductId is a number
+        const foundProduct = response.data.Products.find(p => p.ProductId === Number(productId));
+
+        if (foundProduct) {
+          setProduct(foundProduct);
+        } else {
+          console.error("Product not found:", productId);
+        }
+        setLoading(false);
       })
       .catch(error => {
         console.error("Error fetching data:", error);
+        setLoading(false);
       });
   }, [productId]);
 
-  if (!product) return <p>Loading...</p>;
+  if (loading) return <p>Loading...</p>;
+  if (!product) return <p>Product not found.</p>;
 
   return (
     <div>
