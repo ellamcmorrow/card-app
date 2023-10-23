@@ -1,20 +1,20 @@
-import React, { FC, useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-
+import React, { FC, useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { Button } from "../Button";
+import { Card } from "../Card";
 export const CardItem: FC = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
       .get(`https://moonpig.github.io/tech-test-frontend/search.json`)
-      .then(response => {
-        console.log("Fetched Data:", response.data); // To inspect the structure
-        
-        // Assuming ProductId is a number
-        const foundProduct = response.data.Products.find(p => p.ProductId === Number(productId));
+      .then((response) => {
+        const foundProduct = response.data.Products.find(
+          (p) => p.ProductId === Number(productId)
+        );
 
         if (foundProduct) {
           setProduct(foundProduct);
@@ -23,7 +23,7 @@ export const CardItem: FC = () => {
         }
         setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error fetching data:", error);
         setLoading(false);
       });
@@ -33,9 +33,21 @@ export const CardItem: FC = () => {
   if (!product) return <p>Product not found.</p>;
 
   return (
-    <div>
-      <h1>{product.Title}</h1>
-      <img src={product.ProductImage.Link.Href} alt={product.Title} />
+    <div className="container">
+      <div className="row">
+        <div className="col-12 col-md-6 col-lg-3">
+          <Card>
+            <Card.Image
+              src={product.ProductImage.Link.Href}
+              alt={product.Title}
+            />
+          </Card>
+        </div>
+        <div className="col-12 col-md-6 col-lg-3">
+          <h1> {product.Title}</h1>
+          <Button onPress={() => alert("Success!")}>Buy me!</Button>
+        </div>
+      </div>
     </div>
   );
 };

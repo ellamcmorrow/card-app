@@ -1,21 +1,26 @@
 import React, { FC } from "react";
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import styled, {
+  css,
+  createGlobalStyle,
+  ThemeProvider,
+} from "styled-components";
 import theme from "../../theme";
 import "bootstrap-grid";
 
 // Define global styles
 const GlobalStyles = createGlobalStyle`
+${({ theme }) => css`
   html, body {
     height: 100%;
-    background-color: ${(props) => props.theme.primary};
-    font-size: ${(props) => props.theme.fontSizeBase};
-    font-weight: ${(props) => props.theme.fontWeightBase};
-  }
+    background-color: ${theme.primary};
+    font-size: ${theme.fontSizeBase};
+    font-weight: ${theme.fontWeightBase};
+
+    `}
 `;
 
 interface WrapperProps {
   children?: React.ReactNode;
-  // If you plan to use other props like appId, spacing, grid, or theme, define them here.
 }
 
 const App = styled.div`

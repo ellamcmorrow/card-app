@@ -10,7 +10,7 @@ type CardListProps = {
 };
 
 export const CardList: FC<CardListProps> = ({ children, className }) => {
-  const [data, setData] = useState<[]>([]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
@@ -21,23 +21,27 @@ export const CardList: FC<CardListProps> = ({ children, className }) => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [data]); // Empty dependency array means this useEffect runs once when the component mounts
+  }, [data]);
 
   return (
     <div className="container">
-      {data.map((product) => (
-        <div key={product.ProductId} className="col-12 col-md-6 col-lg-3">
-          <Card>
-            <Card.Image
-              src={product.ProductImage.Link.Href}
-              alt={product.Title}
-            />
-            <Card.Footer>
-              <Link to={`/card/${product.ProductId}`}>See card details</Link>
-            </Card.Footer>
-          </Card>
-        </div>
-      ))}
+      <div className="row">
+        {data.map((product) => (
+          <div key={product.ProductId} className="col-12 col-md-6 col-lg-3">
+            <Card>
+              <Card.Image
+                src={product.ProductImage.Link.Href}
+                alt={product.Title}
+              />
+              <Card.Footer>
+                <Link to={`/card/${product.ProductId}`}>
+                  <Button fullWidth>See card details </Button>
+                </Link>
+              </Card.Footer>
+            </Card>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

@@ -61,14 +61,16 @@ export const Button = styled(_Button)`
     align-items: center;
     border-radius: ${theme.spacingXs};
     background-color: ${theme.darkPink};
-    border: none;
+    border: ${theme.spacingXs};
     color: ${theme.white};
     padding: ${theme.spacingS};
     text-align: center;
     min-height: 48px;
     width: 50%;
     font-weight: ${theme.fontWeightBold};
-    font-size: ${(props) => props.theme.fontSizeBase};
+    &:hover {
+      background-color: ${theme.pink};
+    }
 
     ${fullWidth && fillWidthStyles}
   `}

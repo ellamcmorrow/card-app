@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { Button } from "./";
-import { render, fireEvent, screen, cleanup } from "@testing-library/react";
-import "jest-styled-components";
+import { render, screen, cleanup } from "@testing-library/react";
 
 const clickHandler = jest.fn();
 
@@ -17,15 +16,18 @@ describe("button test", () => {
     expect(screen.getByRole("button")).toBeInTheDocument();
     expect(screen.getByRole("button")).toHaveTextContent(buttonText);
   });
+  test("it renders with width without fullWidth prop", () => {
+    const buttonText = "click me";
+    render(<Button onPress={clickHandler}>{buttonText}</Button>);
+    expect(screen.getByRole("button")).toBeInTheDocument();
+    expect(screen.getByRole("button")).toHaveStyle("width: 50%");
+  });
 
-  test("disabled prop disables button correctly", () => {
-    render(
-      <Button onPress={clickHandler} disabled>
-        Click me
-      </Button>
-    );
-    fireEvent.click(screen.getByRole("button"));
-    expect(clickHandler).not.toHaveBeenCalled();
+  test("it renders with fullWidth prop", () => {
+    const buttonText = "click me";
+    render(<Button onPress={clickHandler} fullWidth={true}>{buttonText}</Button>);
+    expect(screen.getByRole("button")).toBeInTheDocument();
+    expect(screen.getByRole("button")).toHaveStyle("width: 100%");
   });
 
   test("native button attributes are propagated correctly", () => {

@@ -3,15 +3,14 @@ import { MPTheme } from "./MPTheme";
 //custom theme
 const theme: MPTheme = {
   /**COLORS */
-  darkPink: "#CE3356",
-  pink: "#FF778F",
-  yellow: "#FFD334",
-  orange: "#FE912A",
-  blue: "#61D1FF",
-  lightYellow: "FEEEA71",
-  grey: "#DDE2E8",
-  charcoal: "#505050",
-  green: "#E7E99A",
+  lightPink: "#F9BED8",
+  pink: "#F337DB1",
+  darkPink: "#ED5E9D",
+  backgroundGrey: "#FAFAFA",
+  midGrey: "#EBECED",
+  grey: "#B9B9B9",
+  green: "#08C455",
+  red: "#FF0F00",
   white: "#FFFFFF",
 
   /**SPACING */

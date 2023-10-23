@@ -1,14 +1,13 @@
 export type MPTheme = {
   /**COLORS */
+  lightPink?: string;
   darkPink?: string;
   pink?: string;
-  yellow?: string;
-  orange?: string;
-  blue?: string;
-  lightYellow?: string;
   grey?: string;
-  charcoal?: string;
+  midGrey?: string;
+  backgroundGrey?: string;
   green?: string;
+  red?: string;
   white?: string;
 
   /**SPACING */
