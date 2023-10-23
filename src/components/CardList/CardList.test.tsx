@@ -1,6 +1,6 @@
 import { CardList } from "./CardList.component";
 import axios from "axios";
-import { act, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
@@ -35,7 +35,7 @@ describe("CardList Component", () => {
     jest.restoreAllMocks();
   });
 
-  test("should render href and alt text", async () => {
+  test("should render alt text", async () => {
     jest.spyOn(axios, "get").mockResolvedValueOnce(mockData);
 
     render(

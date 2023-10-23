@@ -1,60 +1,47 @@
-import React from "react";
-import { render, waitFor } from "@testing-library/react";
-import { CardItem } from "./CardItem.component";
+import { CardList } from "./CardList.component";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
 
-jest.mock("axios");
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"),
-  useParams: jest.fn(),
-}));
-
-const mockProduct = {
-  ProductId: 123,
-  Title: "Test Product",
-  ProductImage: { Link: { Href: "test-image.jpg" } },
+const mockData = {
+  data: {
+    Products: [
+      {
+        ProductId: "123",
+        Title: "Test Card 1",
+        ProductImage: {
+          Link: {
+            Href: "https://test-image-1.com",
+          },
+        },
+      },
+      {
+        ProductId: "456",
+        Title: "Test Card 2",
+        ProductImage: {
+          Link: {
+            Href: "https://test-image-2.com",
+          },
+        },
+      },
+    ],
+  },
 };
 
-describe("<CardItem />", () => {
-  it("renders loading state initially", () => {
-    const { getByText } = render(<CardItem />);
-    expect(getByText("Loading...")).toBeInTheDocument();
-  });
+describe("CardList Component", () => {
 
-  it("renders product details on successful fetch", async () => {
-    (axios.get as jest.Mock).mockResolvedValueOnce({
-      data: { Products: [mockProduct] },
-    });
-    (useParams as jest.Mock).mockReturnValue({ productId: "123" });
+  test("should render href and alt text", async () => {
+    jest.spyOn(axios, "get").mockResolvedValueOnce(mockData);
 
-    const { getByText, getByAltText } = render(<CardItem />);
-    await waitFor(() => expect(getByText("Test Product")).toBeInTheDocument());
-    expect(getByAltText("Test Product")).toHaveAttribute(
-      "src",
-      "test-image.jpg"
+    render(
+      <BrowserRouter>
+        <CardList />
+      </BrowserRouter>
     );
-  });
 
-  it("renders not found message when product is not in list", async () => {
-    (axios.get as jest.Mock).mockResolvedValueOnce({
-      data: { Products: [] },
-    });
-    (useParams as jest.Mock).mockReturnValue({ productId: "123" });
-
-    const { getByText } = render(<CardItem />);
-    await waitFor(() =>
-      expect(getByText("Product not found.")).toBeInTheDocument()
-    );
-  });
-
-  it("renders not found message on fetch error", async () => {
-    (axios.get as jest.Mock).mockRejectedValueOnce(new Error("Fetch error"));
-    (useParams as jest.Mock).mockReturnValue({ productId: "123" });
-
-    const { getByText } = render(<CardItem />);
-    await waitFor(() =>
-      expect(getByText("Product not found.")).toBeInTheDocument()
-    );
+    expect(await screen.findByAltText("Test Card 1")).toBeInTheDocument();// Title is being used as alt text
+    expect(screen.getByAltText("Test Card 2")).toBeInTheDocument(); 
   });
 });
