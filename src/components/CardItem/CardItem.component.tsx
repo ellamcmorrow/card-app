@@ -3,6 +3,8 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Button } from "../Button";
 import { Card } from "../Card";
+import { Product } from "../types";
+
 export const CardItem: FC = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState<Product | null>(null);

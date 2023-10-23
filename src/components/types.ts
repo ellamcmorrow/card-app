@@ -1,5 +1,5 @@
 //type for API data
-interface Product {
+export interface Product {
   ProductId: number;
   Title: string;
   ProductImage: {
