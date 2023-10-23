@@ -1,6 +1,6 @@
 import { CardList } from "./CardList.component";
 import axios from "axios";
-import { render, screen } from "@testing-library/react";
+import { render, screen, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
@@ -32,7 +32,8 @@ const mockData = {
 
 describe("CardList Component", () => {
   afterEach(() => {
-    jest.restoreAllMocks();
+    jest.clearAllMocks();
+    cleanup();
   });
 
   test("should render alt text", async () => {

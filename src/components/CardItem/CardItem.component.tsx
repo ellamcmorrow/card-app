@@ -5,7 +5,7 @@ import { Button } from "../Button";
 import { Card } from "../Card";
 export const CardItem: FC = () => {
   const { productId } = useParams();
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

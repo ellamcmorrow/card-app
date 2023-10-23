@@ -3,6 +3,7 @@ import { Card } from "../Card";
 import { Button } from "../Button";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { Product } from "../types";
 
 type CardListProps = {
   children?: React.ReactNode;
@@ -10,7 +11,7 @@ type CardListProps = {
 };
 
 export const CardList: FC<CardListProps> = ({ children, className }) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Product | null>([]);
 
   useEffect(() => {
     axios

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`card test matches the snapshot 1`] = `
+<div
+  className="sc-bdnyFh fAhlPD"
+>
+  <div
+    className="sc-gtsqUy cjMAkd"
+  >
+    Test Heading
+  </div>
+  <div
+    className="sc-dlniIP iJtRAn"
+  >
+    Test SubHeading
+  </div>
+  <img
+    alt="Test Image"
+    className="sc-hKFymg hVMszq"
+    src="https://example.com/test.jpg"
+  />
+  <div
+    className="sc-eCAqax fHPCTS"
+  >
+    Test Footer
+  </div>
+</div>
+`;
