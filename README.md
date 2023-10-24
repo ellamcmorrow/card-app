@@ -72,11 +72,11 @@ Short introduction about the project...
 
 ## Features & Improvements
 
-- Fix button alignment style on CardItem 
-- Fix unit test type errors 
-- Write additional unit tests for components
-- Clean up theme names and add additional values
-- Implement a theme switcher 
-- Fix typescript errors in Button component
-- Ensure all relevant accessibility props are implemented
-- Remove bootstrap - add custom styles for button alignment
+- Fix button alignment style on CardItem.
+- Fix unit test type errors. 
+- Write additional unit tests for components.
+- Clean up theme names and add additional values.
+- Implement a theme switcher.
+- Fix typescript errors in Button component.
+- Ensure all relevant accessibility props are implemented.
+- Remove bootstrap - add custom styles for button alignment.
