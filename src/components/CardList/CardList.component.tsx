@@ -36,9 +36,8 @@ export const CardList: FC<CardListProps> = () => {
       <ProductTitle>Cards</ProductTitle>
       <div className="row">
         {data.map((product) => (
-          //todo: fix map type error
           <div key={product.ProductId} className="col-12 col-md-6 col-lg-3">
-            <Card>
+            <Card animate>
               <Card.Image
                 role="img"
                 aria-label="Product Image"

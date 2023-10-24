@@ -69,7 +69,7 @@ export const Button = styled(_Button)`
     min-height: 48px;
     width: 50%;
     font-weight: ${theme.fontWeightBold};
-    fontsize: ${theme.fontSizeBase};
+    font-size: ${theme.fontSizeBase};
     &:hover {
       background-color: ${theme.pink};
     }

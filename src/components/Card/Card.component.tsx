@@ -1,9 +1,10 @@
 import React, { FC } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface CardProps {
   children?: React.ReactNode;
   className?: string;
+  animate?: boolean;
 }
 
 interface CardStaticProps {
@@ -16,30 +17,41 @@ interface CardStaticProps {
 export const Card: FC<CardProps> & CardStaticProps = ({
   children,
   className,
+  animate = false,
 }) => {
-  return <CardWrapper className={className}>{children}</CardWrapper>;
+  return (
+    <CardWrapper className={className} animate={animate}>
+      {children}
+    </CardWrapper>
+  );
 };
 
-export const CardWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+const animateStyles = css`
   width: 100%;
-  height: 100%;
-  min-height: 100%;
-  border-radius: ${(props) => props.theme.spacingXs};
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin: 0 ${(props) => props.theme.spacingXs} 0;
-  background-color: ${(props) => props.theme.white};
-  border: ${(props) => props.theme.spacingXxs} solid
-    ${(props) => props.theme.midGrey};
-  border-radius: ${(props) => props.theme.spacingXxs};
   transition: transform 0.3s ease-in-out;
-
   &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+    transform: scale(1.02);
+    box-shadow: 0 ${(props) => props.theme.spacingXxs}
+      ${(props) => props.theme.spacingS} rgba(0, 0, 0, 0.2);
   }
+`;
+
+export const CardWrapper = styled.div<CardProps>`
+  ${({ animate, theme }) => css`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    border-radius: ${theme.spacingXs};
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 ${theme.spacingXs} 0;
+    background-color: ${theme.white};
+    border: ${theme.spacingXxs} solid ${theme.midGrey};
+    border-radius: ${(props) => props.theme.spacingXxs};
+    ${animate && animateStyles};
+  `}
 `;
 
 const Heading = styled.div`
@@ -72,7 +84,6 @@ const Image = styled.img<ImageProps>`
   flex-direction: row;
   width: 100%;
   height: auto;
-  max-height: 250px;
   border-top-left-radius: ${(props) => props.theme.spacingXs};
   border-top-right-radius: ${(props) => props.theme.spacingXs};
   object-fit: cover;

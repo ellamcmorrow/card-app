@@ -5,7 +5,7 @@ import { Button } from "../Button";
 import { Card } from "../Card";
 import { Product } from "../types";
 import styled from "styled-components";
-// Styled Components
+
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -13,16 +13,26 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.background};
   padding: ${({ theme }) => theme.spacingL};
 `;
+
 const Title = styled.h2`
-  flex-direction: row;
-  align-items: center;
-  padding: ${(props) => props.theme.spacingS};
+  display: flex;
+  display: inline-flex;
+  justify-content: space-between;
   background-color: ${(props) => props.theme.white};
   color: ${(props) => props.theme.textGrey};
   font-weight: ${(props) => props.theme.fontWeightBold};
+  margin: 0;
 `;
-const ButtonContainer = styled.div`
+
+const DetailsContainer = styled.div`
+  display: flex;
+  margin-left: ${(props) => props.theme.spacingS};
   align-self: flex-end;
+`;
+const ButtonContainer = styled.span`
+  display: flex;
+  align-self: flex-end;
+  align-items: flex-end;
 `;
 
 export const CardItem: FC = () => {
@@ -59,22 +69,21 @@ export const CardItem: FC = () => {
       <div className="container">
         <div className="row">
           <div className="col-12 col-md-6 col-lg-4">
-            <Title>{product.Title}</Title>
-
             <Card>
               <Card.Image
                 src={product.ProductImage.Link.Href}
                 alt={`Image of ${product.Title}`}
               />
-              <Card.Heading>{product.Reviews.AverageReviewRating}</Card.Heading>
-              <Card.Body>{product.Description}</Card.Body>
             </Card>
           </div>
-          <ButtonContainer>
-            <div className="col-12 col-md-6 col-lg-3">
-              <Button onPress={() => alert("Success!")}>Buy me!</Button>
+          <DetailsContainer>
+            <div className="col-12 col-md-6 col-lg-6">
+              <Title>{product.Title}</Title>
+              <ButtonContainer>
+                <Button onPress={() => alert("Success!")}>Buy me!</Button>
+              </ButtonContainer>
             </div>
-          </ButtonContainer>
+          </DetailsContainer>
         </div>
       </div>
     </Container>
