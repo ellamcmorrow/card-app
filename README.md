@@ -41,10 +41,6 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-
-
-Short introduction about the project...
-
 ## Table of Contents
 
 - [Technologies Used](#technologies-used)
