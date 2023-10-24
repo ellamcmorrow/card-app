@@ -59,7 +59,7 @@ Short introduction about the project...
 
 - **Axios**: For making HTTP requests.
 - **React**: JavaScript library for building the user interface.
-- **Styled Components & Theme Provider**: For styled components.
+- **Styled Components & Theme Provider**: For styling.
 - **React Aria**: For accessibility (a11y) in the Button component.
 - **React Testing Library**: For unit and integration tests.
 - **Bootstrap**: For responsive design and grid layout.
