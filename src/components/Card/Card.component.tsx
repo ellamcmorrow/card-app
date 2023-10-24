@@ -2,8 +2,17 @@ import React, { FC } from "react";
 import styled, { css } from "styled-components";
 
 interface CardProps {
+  /**
+   * Children for card element
+   */
   children?: React.ReactNode;
+  /**
+   * Class name applied to the native button element.
+   */
   className?: string;
+  /**
+   * animate card
+   */
   animate?: boolean;
 }
 
@@ -17,10 +26,12 @@ interface CardStaticProps {
 export const Card: FC<CardProps> & CardStaticProps = ({
   children,
   className,
-  animate = "false",
+  //@ts-ignore
+  animate = false,
+  ...props
 }) => {
   return (
-    <CardWrapper className={className} animate={animate}>
+    <CardWrapper className={className} {...props}>
       {children}
     </CardWrapper>
   );

@@ -1,7 +1,3 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -44,3 +40,43 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
+Short introduction about the project...
+
+## Table of Contents
+
+- [Technologies Used](#technologies-used)
+- [Setup & Installation](#setup--installation)
+- [Features & Improvements](#features--improvements)
+- [Screenshots](#screenshots)
+- [Contribution](#contribution)
+- [Credits & Acknowledgments](#credits--acknowledgments)
+- [License](#license)
+
+## Technologies Used
+
+- **Axios**: For making HTTP requests.
+- **React**: JavaScript library for building the user interface.
+- **Styled Components & Theme Provider**: For styled components.
+- **React Aria**: For accessibility (a11y) in the Button component.
+- **React Testing Library**: For unit and integration tests.
+- **Bootstrap**: For responsive design and grid layout.
+
+## Setup & Installation
+
+1. Clone the repository...
+2. Install dependencies...
+3. Run the project...
+
+## Features & Improvements
+
+- Fix button alignment style on CardItem 
+- Fix unit test type errors 
+- Write additional unit tests for components
+- Clean up theme names and add additional values
+- Implement a theme switcher 
+- Fix typescript errors in Button component
+- Ensure all relevant accessibility props are implemented
+- Remove bootstrap - add custom styles for button alignment
