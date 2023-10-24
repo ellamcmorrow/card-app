@@ -7,8 +7,22 @@ import { Product } from "../types";
 import styled from "styled-components";
 // Styled Components
 const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
   background-color: ${({ theme }) => theme.background};
   padding: ${({ theme }) => theme.spacingL};
+`;
+const Title = styled.h2`
+  flex-direction: row;
+  align-items: center;
+  padding: ${(props) => props.theme.spacingS};
+  background-color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.textGrey};
+  font-weight: ${(props) => props.theme.fontWeightBold};
+`;
+const ButtonContainer = styled.div`
+  align-self: flex-end;
 `;
 
 export const CardItem: FC = () => {
@@ -44,21 +58,23 @@ export const CardItem: FC = () => {
     <Container>
       <div className="container">
         <div className="row">
-          <div className="col-12 col-md-6 col-lg-3">
+          <div className="col-12 col-md-6 col-lg-4">
+            <Title>{product.Title}</Title>
+
             <Card>
               <Card.Image
                 src={product.ProductImage.Link.Href}
                 alt={`Image of ${product.Title}`}
               />
-              <Card.Heading>{product.Title}</Card.Heading>
-              <Card.Footer>
-                <Button fullWidth>See card details</Button>
-              </Card.Footer>
+              <Card.Heading>{product.Reviews.AverageReviewRating}</Card.Heading>
+              <Card.Body>{product.Description}</Card.Body>
             </Card>
           </div>
-          <div className="col-12 col-md-6 col-lg-3">
-            <Button onPress={() => alert("Success!")}>Buy me!</Button>
-          </div>
+          <ButtonContainer>
+            <div className="col-12 col-md-6 col-lg-3">
+              <Button onPress={() => alert("Success!")}>Buy me!</Button>
+            </div>
+          </ButtonContainer>
         </div>
       </div>
     </Container>

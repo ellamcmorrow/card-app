@@ -34,14 +34,20 @@ export const CardWrapper = styled.div`
   border: ${(props) => props.theme.spacingXxs} solid
     ${(props) => props.theme.midGrey};
   border-radius: ${(props) => props.theme.spacingXxs};
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
+  }
 `;
 
 const Heading = styled.div`
   flex-direction: row;
   align-items: center;
   padding: ${(props) => props.theme.spacingS};
-  background-color: ${(props) => props.theme.lightPink};
-  color: ${(props) => props.theme.darkPink};
+  background-color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.textGrey};
   font-weight: ${(props) => props.theme.fontWeightBold};
 `;
 Card.Heading = Heading;
