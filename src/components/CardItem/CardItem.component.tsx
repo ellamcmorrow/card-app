@@ -6,7 +6,7 @@ import { Card } from "../Card";
 import { Product } from "../types";
 import styled from "styled-components";
 
-const Container = styled.div`
+const Container = styled.span`
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -21,18 +21,7 @@ const Title = styled.h2`
   background-color: ${(props) => props.theme.white};
   color: ${(props) => props.theme.textGrey};
   font-weight: ${(props) => props.theme.fontWeightBold};
-  margin: 0;
-`;
-
-const DetailsContainer = styled.div`
-  display: flex;
-  margin-left: ${(props) => props.theme.spacingS};
-  align-self: flex-end;
-`;
-const ButtonContainer = styled.span`
-  display: flex;
-  align-self: flex-end;
-  align-items: flex-end;
+  margin: 0 ${({ theme }) => theme.spacingL} 0 0;
 `;
 
 export const CardItem: FC = () => {
@@ -76,14 +65,14 @@ export const CardItem: FC = () => {
               />
             </Card>
           </div>
-          <DetailsContainer>
-            <div className="col-12 col-md-6 col-lg-6">
-              <Title>{product.Title}</Title>
-              <ButtonContainer>
+          <div className="col-12 col-md-6 col-lg-6">
+            <div className="d-flex flex-column justify-content-between pb-4">
+                <Title>{product.Title}</Title>
+                <div className="pt-4">
                 <Button onPress={() => alert("Success!")}>Buy me!</Button>
-              </ButtonContainer>
-            </div>
-          </DetailsContainer>
+                </div>
+              </div>
+          </div>
         </div>
       </div>
     </Container>

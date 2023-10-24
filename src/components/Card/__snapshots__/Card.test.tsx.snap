@@ -2,25 +2,26 @@
 
 exports[`card test matches the snapshot 1`] = `
 <div
-  className="sc-bdnyFh fAhlPD"
+  animate="false"
+  className="sc-bdnyFh hasVEk"
 >
   <div
-    className="sc-gtsqUy cjMAkd"
+    className="sc-gtsqUy gfsRFW"
   >
     Test Heading
   </div>
   <div
-    className="sc-dlniIP iJtRAn"
+    className="sc-dlniIP bLlMqe"
   >
-    Test SubHeading
+    Test Body
   </div>
   <img
     alt="Test Image"
-    className="sc-hKFymg hVMszq"
+    className="sc-hKFymg iIxIsR"
     src="https://example.com/test.jpg"
   />
   <div
-    className="sc-eCAqax fHPCTS"
+    className="sc-eCAqax fKutfB"
   >
     Test Footer
   </div>

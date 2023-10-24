@@ -17,7 +17,7 @@ interface CardStaticProps {
 export const Card: FC<CardProps> & CardStaticProps = ({
   children,
   className,
-  animate = false,
+  animate = "false",
 }) => {
   return (
     <CardWrapper className={className} animate={animate}>

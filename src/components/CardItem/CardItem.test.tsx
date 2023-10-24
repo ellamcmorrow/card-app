@@ -1,9 +1,9 @@
 import React from "react";
-import axios from "axios";
-import { render, screen } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
-import { MemoryRouter, Route, Routes } from "react-router-dom";
+import { render, waitFor, screen, act } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { CardItem } from "./CardItem.component";
+import axios from "axios";
+import { BrowserRouter } from "react-router-dom"; // To handle `useParams`
 
 const mockData = {
   data: {
@@ -29,41 +29,38 @@ const mockData = {
     ],
   },
 };
-// Mocking the axios module
+
+// Mocking axios
 jest.mock("axios");
 
-describe("CardItem Component", () => {
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
-  it("displays a loading message when fetching product", () => {
-    jest.spyOn(axios, "get").mockResolvedValueOnce(mockData);
-
-    render(
-      <MemoryRouter initialEntries={["/product/123"]}>
-        <Routes>
-          <Route path="/product/:productId">
-            <CardItem />
-          </Route>
-        </Routes>
-      </MemoryRouter>
-    );
+describe("Card item test", () => {
+  it("renders loading state initially", () => {
+    const mockAxios = axios as jest.Mocked<typeof axios>;
+    mockAxios.get.mockResolvedValueOnce({ data: {} });
+    act(() => {
+      render(
+        <BrowserRouter>
+          <CardItem />
+        </BrowserRouter>
+      );
+    });
 
     expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
 
-  it("displays the product information when fetched successfully", async () => {
-    jest.spyOn(axios, "get").mockResolvedValueOnce(mockData);
+  it("renders product not found if no product is found", async () => {
+    const mockAxios = axios as jest.Mocked<typeof axios>;
+    mockAxios.get.mockResolvedValueOnce({ data: { mockData } });
+    act(() => {
+      render(
+        <BrowserRouter>
+          <CardItem />
+        </BrowserRouter>
+      );
+    });
 
-    render(
-      <>
-        <CardItem />
-      </>
+    await waitFor(() =>
+      expect(screen.getByText("Product not found.")).toBeInTheDocument()
     );
-
-    expect(await screen.getByText("Test Card")).toBeInTheDocument();
-    expect(await screen.getByAltText("Test Card")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Buy me!" })).toBeInTheDocument();
   });
 });

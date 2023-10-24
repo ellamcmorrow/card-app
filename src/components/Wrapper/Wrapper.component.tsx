@@ -6,6 +6,8 @@ import styled, {
 } from "styled-components";
 import theme from "../../theme";
 import "bootstrap-grid";
+import "bootstrap/dist/css/bootstrap.min.css";
+
 
 // Define global styles
 const GlobalStyles = createGlobalStyle`
@@ -14,11 +16,7 @@ ${({ theme }) => css`
     height: 100%;
     background-color: ${theme.primary};
     font-size: ${theme.fontSizeBase};
-    font-weight: ${theme.fontWeightBase};
-    .mp-button{
-      background-color: pink;
-    }
-
+    font-weight: ${theme.fontWeightBase}; 
     `}
 `;
 
