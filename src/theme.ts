@@ -7,11 +7,12 @@ const theme: MPTheme = {
   pink: "#F337DB1",
   darkPink: "#ED5E9D",
   backgroundGrey: "#FAFAFA",
+  textGrey: "#4B4D4F",
   midGrey: "#EBECED",
   grey: "#B9B9B9",
   green: "#08C455",
   red: "#FF0F00",
-  white: "#FFFFFF",
+  white: "#FFFFFF", 
 
   /**SPACING */
   // TODO: update to rem values

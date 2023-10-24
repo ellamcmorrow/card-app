@@ -1,13 +1,9 @@
-import React from "react";
+import React, { Children } from "react";
 import "./App.css";
-import {Wrapper, CardList } from "./components";
+import { Wrapper, CardList } from "./components";
 
 function App() {
-  return (
-    <Wrapper>
-      <CardList />
-    </Wrapper>
-  );
+  return { Children };
 }
 
 export default App;

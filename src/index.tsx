@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { CardItem } from "./components";
+import { CardItem, CardList, Wrapper } from "./components";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -12,11 +12,19 @@ const root = ReactDOM.createRoot(
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: (
+      <Wrapper>
+        <CardList />
+      </Wrapper>
+    ),
   },
   {
     path: "/card/:productId",
-    element: <CardItem />,
+    element: (
+      <Wrapper>
+        <CardItem />
+      </Wrapper>
+    ),
   },
 ]);
 

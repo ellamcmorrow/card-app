@@ -15,6 +15,9 @@ ${({ theme }) => css`
     background-color: ${theme.primary};
     font-size: ${theme.fontSizeBase};
     font-weight: ${theme.fontWeightBase};
+    .mp-button{
+      background-color: pink;
+    }
 
     `}
 `;

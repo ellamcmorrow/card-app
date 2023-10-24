@@ -50,6 +50,7 @@ const _Button: FC<ButtonProps & AriaButtonProps> = ({
     </button>
   );
 };
+
 const fillWidthStyles = css`
   width: 100%;
 `;
@@ -68,6 +69,7 @@ export const Button = styled(_Button)`
     min-height: 48px;
     width: 50%;
     font-weight: ${theme.fontWeightBold};
+    fontsize: ${theme.fontSizeBase};
     &:hover {
       background-color: ${theme.pink};
     }

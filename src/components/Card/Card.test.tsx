@@ -14,7 +14,7 @@ describe("card test", () => {
       .create(
         <Card>
           <Card.Heading>Test Heading</Card.Heading>
-          <Card.SubHeading>Test SubHeading</Card.SubHeading>
+          <Card.Body>Test Body</Card.Body>
           <Card.Image src="https://example.com/test.jpg" alt="Test Image" />
           <Card.Footer>Test Footer</Card.Footer>
         </Card>

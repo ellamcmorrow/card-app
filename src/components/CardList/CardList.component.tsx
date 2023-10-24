@@ -4,14 +4,21 @@ import { Button } from "../Button";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Product } from "../types";
+import styled from "styled-components";
 
 type CardListProps = {
   children?: React.ReactNode;
   className?: string;
 };
 
-export const CardList: FC<CardListProps> = ({ children, className }) => {
-  const [data, setData] = useState<Product | null>([]);
+const ProductTitle = styled.h1`
+  font-size: ${({ theme }) => theme.fontSizeL};
+  color: ${({ theme }) => theme.primaryText};
+  margin-bottom: ${({ theme }) => theme.spacingM};
+`;
+
+export const CardList: FC<CardListProps> = () => {
+  const [data, setData] = useState<Product[]>([]);
 
   useEffect(() => {
     axios
@@ -22,21 +29,26 @@ export const CardList: FC<CardListProps> = ({ children, className }) => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [data]);
+  }, []);
 
   return (
     <div className="container">
+      <ProductTitle>Cards</ProductTitle>
       <div className="row">
         {data.map((product) => (
+          //todo: fix map type error
           <div key={product.ProductId} className="col-12 col-md-6 col-lg-3">
             <Card>
               <Card.Image
+                role="img"
+                aria-label="Product Image"
                 src={product.ProductImage.Link.Href}
-                alt={product.Title}
+                alt={`Image of ${product.Title}`}
               />
+              <Card.Body>{product.Description}</Card.Body>
               <Card.Footer>
                 <Link to={`/card/${product.ProductId}`}>
-                  <Button fullWidth>See card details </Button>
+                  <Button fullWidth>See card details</Button>
                 </Link>
               </Card.Footer>
             </Card>

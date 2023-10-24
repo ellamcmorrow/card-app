@@ -1,4 +1,6 @@
 export type MPTheme = {
+  //TODO: improve theme token names
+
   /**COLORS */
   lightPink?: string;
   darkPink?: string;
@@ -6,6 +8,7 @@ export type MPTheme = {
   grey?: string;
   midGrey?: string;
   backgroundGrey?: string;
+  textGrey?: string;
   green?: string;
   red?: string;
   white?: string;

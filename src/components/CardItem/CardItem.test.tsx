@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { CardItem } from "./CardItem.component";
@@ -57,13 +57,9 @@ describe("CardItem Component", () => {
     jest.spyOn(axios, "get").mockResolvedValueOnce(mockData);
 
     render(
-      <MemoryRouter initialEntries={["/product/123"]}>
-        <Routes>
-          <Route path="/product/:productId">
-            <CardItem />
-          </Route>
-        </Routes>
-      </MemoryRouter>
+      <>
+        <CardItem />
+      </>
     );
 
     expect(await screen.getByText("Test Card")).toBeInTheDocument();
