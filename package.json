@@ -1,7 +1,7 @@
 {
   "name": "card-app",
   "version": "0.1.0",
-  "homepage": "https://ellamcmorrow.github.io/card-app",
+  "homepage": "https://ellamcmorrow.github.io/card-app/index.html",
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
