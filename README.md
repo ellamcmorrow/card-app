@@ -41,6 +41,11 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+## Description
+
+This app displays card details from a data source. Click on a card to see more about it.
+Check it out [here](https://ellamcmorrow.github.io/card-app/).
+
 ## Table of Contents
 
 - [Technologies Used](#technologies-used)
@@ -60,8 +65,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 - **React Testing Library**: For unit and integration tests.
 - **Bootstrap**: For responsive design and grid layout.
 - **React Router**: For routing.
-
-
+- **Gh-pages**: Github pages is used for hosting.
 
 ## Setup & Installation
 
@@ -72,7 +76,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Features & Improvements
 
 - Fix button alignment style on CardItem.
-- Fix unit tests and type console errors. 
+- Fix unit tests and type console errors.
 - Write additional unit tests for components.
 - Clean up theme names and add additional values.
 - Implement a theme switcher.
