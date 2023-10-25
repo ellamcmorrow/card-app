@@ -2,8 +2,7 @@
 
 exports[`card test matches the snapshot 1`] = `
 <div
-  animate="false"
-  className="sc-bdnyFh hasVEk"
+  className="sc-bdnyFh kzDKXh"
 >
   <div
     className="sc-gtsqUy gfsRFW"
@@ -21,7 +20,7 @@ exports[`card test matches the snapshot 1`] = `
     src="https://example.com/test.jpg"
   />
   <div
-    className="sc-eCAqax fKutfB"
+    className="sc-eCAqax hyemUz"
   >
     Test Footer
   </div>

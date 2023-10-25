@@ -103,7 +103,9 @@ Card.Image = Image;
 
 const Footer = styled.div`
   flex-direction: row;
-  margin: ${(props) => props.theme.spacingXxs};
+  padding: ${(props) => props.theme.spacingXxs}
+    ${(props) => props.theme.spacingXxs} ${(props) => props.theme.spacingS}
+    ${(props) => props.theme.spacingXxs};
   width: 100%;
   align-items: center;
   max-width: 100%;

@@ -36,7 +36,7 @@ export const CardList: FC<CardListProps> = () => {
       <ProductTitle>Cards</ProductTitle>
       <div className="row">
         {data.map((product) => (
-          <div key={product.ProductId} className="col-12 col-md-6 col-lg-3">
+          <div key={product.ProductId} className="col-12 col-md-6 col-lg-3 m-4">
             <Card animate>
               <Card.Image
                 role="img"
