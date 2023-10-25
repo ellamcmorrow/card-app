@@ -3,7 +3,7 @@ import axios from "axios";
 import { render, screen, cleanup, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 const mockData = {
   data: {
@@ -25,9 +25,9 @@ const mockData = {
 describe("CardList Component", () => {
   test("should renders component", () => {
     render(
-      <BrowserRouter>
+      <HashRouter>
         <CardList />
-      </BrowserRouter>
+      </HashRouter>
     );
 
     expect(screen.getByText("Cards")).toBeInTheDocument();
@@ -37,9 +37,9 @@ describe("CardList Component", () => {
     jest.spyOn(axios, "get").mockResolvedValueOnce(mockData);
 
     render(
-      <BrowserRouter>
+      <HashRouter>
         <CardList />
-      </BrowserRouter>
+      </HashRouter>
     );
 
     await waitFor(() =>

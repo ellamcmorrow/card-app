@@ -2,7 +2,7 @@ import React from "react";
 import { render, waitFor, screen, act } from "@testing-library/react";
 import { CardItem } from "./CardItem.component";
 import axios from "axios";
-import { BrowserRouter } from "react-router-dom"; 
+import { HashRouter } from "react-router-dom"; 
 
 const mockData = {
   data: {
@@ -38,9 +38,9 @@ describe("Card item test", () => {
     mockAxios.get.mockResolvedValueOnce({ data: {} });
     act(() => {
       render(
-        <BrowserRouter>
+        <HashRouter>
           <CardItem />
-        </BrowserRouter>
+        </HashRouter>
       );
     });
 
@@ -52,9 +52,9 @@ describe("Card item test", () => {
   //   mockAxios.get.mockResolvedValueOnce({ data: { mockData } });
   //   act(() => {
   //     render(
-  //       <BrowserRouter>
+  //       <HashRouter>
   //         <CardItem />
-  //       </BrowserRouter>
+  //       </HashRouter>
   //     );
   //   });
 
