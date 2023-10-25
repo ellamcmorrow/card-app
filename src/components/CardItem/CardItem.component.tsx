@@ -24,6 +24,13 @@ const Title = styled.h2`
   margin: 0 ${({ theme }) => theme.spacingL} 0 0;
 `;
 
+const DetailsContainer = styled.span`
+  @media (max-width: 767px) {
+    margin: ${({ theme }) => theme.spacingS} 0 0
+      ${({ theme }) => theme.spacingS};
+  }
+`;
+
 export const CardItem: FC = () => {
   const { productId } = useParams();
   const [product, setProduct] = useState<Product | null>(null);
@@ -67,10 +74,16 @@ export const CardItem: FC = () => {
           </div>
           <div className="col-12 col-md-6 col-lg-6">
             <div className="d-flex flex-column justify-content-between pb-4">
-              <Title>{product.Title}</Title>
-              <div className="pt-4">
-                <Button onPress={() => alert("Success!")}>Buy me!</Button>
-              </div>
+              <DetailsContainer>
+                <div className="flex-row">
+                  <Title>{product.Title}</Title>
+                </div>
+                <div className="pt-4">
+                  <div className="flex-row">
+                    <Button onPress={() => alert("Success!")}>Buy me!</Button>
+                  </div>
+                </div>
+              </DetailsContainer>
             </div>
           </div>
         </div>

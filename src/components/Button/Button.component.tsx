@@ -73,6 +73,9 @@ export const Button = styled(_Button)`
     &:hover {
       background-color: ${theme.pink};
     }
+    a {
+      text-decoration: none;
+    }
 
     ${fullWidth && fillWidthStyles}
   `}
