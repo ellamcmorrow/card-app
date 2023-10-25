@@ -8,16 +8,21 @@ import theme from "../../theme";
 import "bootstrap-grid";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 // Define global styles
 const GlobalStyles = createGlobalStyle`
 ${({ theme }) => css`
-  html, body {
+  html,
+  body {
     height: 100%;
     background-color: ${theme.primary};
     font-size: ${theme.fontSizeBase};
-    font-weight: ${theme.fontWeightBase}; 
-    `}
+    font-weight: ${theme.fontWeightBase};
+    h1 {
+      font-weight: ${({ theme }) => theme.fontWeightBold};
+      font-size: ${({ theme }) => theme.fontSizeL};
+    }
+  }
+`}
 `;
 
 interface WrapperProps {

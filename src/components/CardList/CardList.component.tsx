@@ -12,7 +12,6 @@ type CardListProps = {
 };
 
 const ProductTitle = styled.h1`
-  font-size: ${({ theme }) => theme.fontSizeL};
   color: ${({ theme }) => theme.primaryText};
   margin-bottom: ${({ theme }) => theme.spacingM};
 `;
@@ -32,27 +31,33 @@ export const CardList: FC<CardListProps> = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container mt-4">
       <ProductTitle>Cards</ProductTitle>
       <div className="row">
-        {data.map((product) => (
-          <div key={product.ProductId} className="col-12 col-md-6 col-lg-3 m-4">
-            <Card animate>
-              <Card.Image
-                role="img"
-                aria-label="Product Image"
-                src={product.ProductImage.Link.Href}
-                alt={`Image of ${product.Title}`}
-              />
-              <Card.Body>{product.Description}</Card.Body>
-              <Card.Footer>
-                <Link to={`/card/${product.ProductId}`}>
-                  <Button fullWidth>See card details</Button>
-                </Link>
-              </Card.Footer>
-            </Card>
-          </div>
-        ))}
+        {data.map((product) => {
+          const htmlString = product.Description;
+          return (
+            <div key={product.ProductId} className="col-12 col-lg-4 mb-4">
+              <Card>
+                <Card.Image
+                  role="img"
+                  aria-label="Product Image"
+                  src={product.ProductImage.Link.Href}
+                  alt={`Image of ${product.Title}`}
+                />
+                <Card.Heading>{product.Title}</Card.Heading>
+                <Card.Body>
+                  <div dangerouslySetInnerHTML={{ __html: htmlString }} />
+                </Card.Body>
+                <Card.Footer>
+                  <Link to={`/card/${product.ProductId}`}>
+                    <Button fullWidth>See card details</Button>
+                  </Link>
+                </Card.Footer>
+              </Card>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

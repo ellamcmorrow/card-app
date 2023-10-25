@@ -26,8 +26,6 @@ interface CardStaticProps {
 export const Card: FC<CardProps> & CardStaticProps = ({
   children,
   className,
-  //@ts-ignore
-  animate = false,
   ...props
 }) => {
   return (
@@ -37,38 +35,28 @@ export const Card: FC<CardProps> & CardStaticProps = ({
   );
 };
 
-const animateStyles = css`
-  width: 100%;
-  transition: transform 0.3s ease-in-out;
-  &:hover {
-    transform: scale(1.02);
-    box-shadow: 0 ${(props) => props.theme.spacingXxs}
-      ${(props) => props.theme.spacingS} rgba(0, 0, 0, 0.2);
-  }
-`;
-
 export const CardWrapper = styled.div<CardProps>`
   ${({ animate, theme }) => css`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 100%;
     height: 100%;
     min-height: 100%;
     border-radius: ${theme.spacingXs};
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 0 ${theme.spacingXs} 0;
     background-color: ${theme.white};
     border: ${theme.spacingXxs} solid ${theme.midGrey};
     border-radius: ${(props) => props.theme.spacingXxs};
-    ${animate && animateStyles};
   `}
 `;
 
 const Heading = styled.div`
   flex-direction: row;
   align-items: center;
-  padding: ${(props) => props.theme.spacingS};
+  justify-content: flex-start;
+  padding: ${(props) => props.theme.spacingBase}
+    ${(props) => props.theme.spacingBase} 0
+    ${(props) => props.theme.spacingBase};
   background-color: ${(props) => props.theme.white};
   color: ${(props) => props.theme.textGrey};
   font-weight: ${(props) => props.theme.fontWeightBold};
@@ -80,7 +68,11 @@ const Body = styled.div`
   padding: ${(props) => props.theme.spacingXs};
   font-size: ${(props) => props.theme.fontSizeSmall};
   background-color: ${(props) => props.theme.white};
+  padding: ${(props) => props.theme.spacingBase}
+    ${(props) => props.theme.spacingBase} 0
+    ${(props) => props.theme.spacingBase};
   color: ${(props) => props.theme.textGrey};
+  justify-content: center;
 `;
 Card.Body = Body;
 
@@ -103,12 +95,12 @@ Card.Image = Image;
 
 const Footer = styled.div`
   flex-direction: row;
-  padding: ${(props) => props.theme.spacingXxs}
-    ${(props) => props.theme.spacingXxs} ${(props) => props.theme.spacingS}
-    ${(props) => props.theme.spacingXxs};
+  justify-content: flex-end;
+  padding: ${(props) => props.theme.spacingBase};
   width: 100%;
   align-items: center;
   max-width: 100%;
+  margin-top: auto;
 `;
 
 Card.Footer = Footer;
