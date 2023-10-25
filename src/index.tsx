@@ -9,6 +9,11 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
+/**
+ * Using hashrouter as browser router doesnt work properly w/ gh-pages
+ * https://reactrouter.com/en/main/router-components/hash-router
+ */
+
 const router = createHashRouter([
   {
     path: "/",
