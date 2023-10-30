@@ -51,11 +51,8 @@ Check it out [here](https://ellamcmorrow.github.io/card-app/).
 - [Technologies Used](#technologies-used)
 - [Setup & Installation](#setup--installation)
 - [Features & Improvements](#features--improvements)
-- [Screenshots](#screenshots)
-- [Contribution](#contribution)
-- [Credits & Acknowledgments](#credits--acknowledgments)
-- [License](#license)
 
+  
 ## Technologies Used
 
 - **Axios**: For making HTTP requests.
